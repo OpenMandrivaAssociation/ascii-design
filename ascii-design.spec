@@ -28,7 +28,7 @@ to create various styles of ascii arts.
 
 %prep
 %setup -q 
-sed -i 's/\r//' {COPYING,README}.TXT
+sed -i 's/\r//' {COPYING,INSTALL}.TXT
 #patch0 -p0
 
 %build
@@ -55,7 +55,7 @@ EOF
 desktop-file-validate $RPM_BUILD_ROOT%{_datadir}/applications/%{name}.desktop
 
 %files
-%doc COPYING.TXT README.TXT
+%doc COPYING.TXT INSTALL.TXT
 %{_bindir}/ascii-design
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/ascii-design.png
