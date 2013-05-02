@@ -1,12 +1,13 @@
 Name:       ascii-design
-Version:    1.0
+Version:    1.0.1
 Release:    1
 License:    GPLv2
 Summary:    Create awesome ascii art text
 Url:        http://ascii-design.sourceforge.net/
 Group:      Office
-Source0:    http://surfnet.dl.sourceforge.net/project/ascii-design/ascii-design/Ascii-Design_1.0/%{name}_%{version}.tar.bz2
-Patch0:     ascii-design-fsf-adress.patch
+Source0:    http://surfnet.dl.sourceforge.net/project/ascii-design/ascii-design/Ascii-Design%201.0.1/%{name}-%{version}.tar.bz2
+# aplied upstream
+# Patch0:     ascii-design-fsf-adress.patch
 
 BuildRequires:  gcc-c++ 
 BuildRequires:  cmake  
@@ -26,9 +27,9 @@ Ascii Design is able to use dozens of special fonts
 to create various styles of ascii arts.
 
 %prep
-%setup -q -n %{name}_%{version}
+%setup -q 
 sed -i 's/\r//' {COPYING,README}.TXT
-%patch0 -p0
+#patch0 -p0
 
 %build
 %cmake_kde4 -DCMAKE_INSTALL_PREFIX=$RPM_BUILD_ROOT%{_prefix} 
