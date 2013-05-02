@@ -16,7 +16,7 @@ Release:    1%{?dist}
 License:    GPLv2
 Summary:    Create awesome ascii art text
 Url:         http://ascii-design.sourceforge.net/
-Group:      Office
+Group:      Applications/Publishing
 Source0:    http://surfnet.dl.sourceforge.net/project/ascii-design/ascii-design/Ascii-Design%201.0.1/%{name}-%{version}.tar.bz2
 Source1:    http://ascii-design.sourceforge.net/figlet_fonts.zip	
 # aplied upstream
@@ -27,10 +27,11 @@ BuildRequires:  cmake
 BuildRequires:  make 
 BuildRequires:  desktop-file-utils
 BuildRequires:  unzip
+BuildRequires:  qt4-devel
 
 Requires:	figlet
 
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+
 
 %description
 Free program, based on figlet engine, that enables you 
@@ -44,24 +45,21 @@ to create various styles of ascii arts.
 %setup -q -a 1
 sed -i 's/\r//' {COPYING,INSTALL}.TXT
 #patch0 -p0
+%__rm -fr fonts/.directory
 
 %build
-%__mkdir -p build
-pushd build
-cmake -DCMAKE_INSTALL_PREFIX=%{buildroot}%{_prefix} ..
-popd
-
-make %{?_smp_mflags} -C build
+%__mkdir -p build && cd build
+cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} ..
+make %{?_smp_mflags}
 
 %install
-rm -rf %{buildroot}
-make install
-/fast DESTDIR=%{buildroot} -C build
+rm -rf $RPM_BUILD_ROOT
+make install DESTDIR=$RPM_BUILD_ROOT -C build
 
 # fix desktop
 rm -fr $RPM_BUILD_ROOT%{_datadir}/applications/%{name}.desktop
 
-cat << EOF > %{buildroot}%{_datadir}/applications/%{name}.desktop
+cat << EOF > $RPM_BUILD_ROOT%{_datadir}/applications/%{name}.desktop
 [Desktop Entry]
 Categories=Office;
 Comment=Start Ascii Design
@@ -74,9 +72,12 @@ Type=Application
 EOF
 
 desktop-file-validate $RPM_BUILD_ROOT%{_datadir}/applications/%{name}.desktop
-# fonts
+
+# fonts -alternative to figlet-fonts-
 %__mkdir -p $RPM_BUILD_ROOT%{_datadir}/%{name}
 %__cp -R fonts $RPM_BUILD_ROOT%{_datadir}/%{name}
+
+%__chmod a+x $RPM_BUILD_ROOT%{_bindir}/%{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -88,4 +89,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/ascii-design.png
 %{_datadir}/%{name}/fonts/
+
+%changelog
+* Thu May 02 2013 Falticska Florin <symbianflo@mandrivausers.ro> - 1.0.1-1stella
+- Backport for stella project
+- MRB-Mandriva Users.Ro
 
