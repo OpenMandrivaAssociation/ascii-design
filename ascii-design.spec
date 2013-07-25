@@ -1,5 +1,5 @@
 Name:       ascii-design
-Version:    1.0.1
+Version:    1.0.2
 Release:    1
 License:    GPLv2
 Summary:    Create awesome ascii art text
