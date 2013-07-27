@@ -30,6 +30,9 @@ to create various styles of ascii arts.
 %prep
 %setup -q 
 sed -i 's/\r//' {COPYING,INSTALL}.TXT
+cd src
+find . -name "*.cpp" -o -name "*.h" -o -name "*.cpp" |xargs chmod 0644
+cd -
 #patch0 -p0
 
 %build
