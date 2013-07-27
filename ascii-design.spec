@@ -14,6 +14,7 @@ BuildRequires:  cmake
 BuildRequires:  make 
 BuildRequires:  kdelibs4-devel
 BuildRequires:  desktop-file-utils
+BuildRequires:  jpeg6-devel
 
 Requires:	figlet
 Requires:	figlet-more-fonts
