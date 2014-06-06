@@ -1,3 +1,5 @@
+%define oname Ascii-Design
+
 Name:       ascii-design
 Version:    1.0.3
 Release:    1
@@ -26,7 +28,7 @@ Ascii Design is able to use dozens of special fonts
 to create various styles of ascii arts.
 
 %prep
-%setup -q
+%setup -qn %{oname}-%{version}
 sed -i 's/\r//' {COPYING,INSTALL}.TXT
 cd src
 find . -name "*.cpp" -o -name "*.h" -o -name "*.cpp" |xargs chmod 0644
