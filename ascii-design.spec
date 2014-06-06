@@ -34,7 +34,7 @@ cd src
 find . -name "*.cpp" -o -name "*.h" -o -name "*.cpp" |xargs chmod 0644
 cd -
 
-perl -pi -e "s|/share/appdata/|/share/ascii-design/|appdata/|"  CMakeLists.txt
+perl -pi -e "s|/share/appdata/|/share/ascii-design/appdata/|"  CMakeLists.txt
 
 %build
 %cmake_kde4 -DCMAKE_INSTALL_PREFIX=$RPM_BUILD_ROOT%{_prefix} 
