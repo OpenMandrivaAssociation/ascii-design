@@ -56,7 +56,7 @@ Type=Application
 EOF
 
 desktop-file-validate $RPM_BUILD_ROOT%{_datadir}/applications/%{name}.desktop
-makedir -p %{buildroot}%{_datadir}/%{oname}
+makedir -p %{buildroot}%{_datadir}/%{name}
 mv -f %{buildroot}%{_datadir}/appdata/ascii-design.appdata.xml \
 	%{buildroot}%{_datadir}/%{name}/appdata/ascii-design.appdata.xml
 
