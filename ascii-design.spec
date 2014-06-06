@@ -56,11 +56,15 @@ Type=Application
 EOF
 
 desktop-file-validate $RPM_BUILD_ROOT%{_datadir}/applications/%{name}.desktop
+makedir -p %{buildroot}%{_datadir}/%{oname}
+mv -f %{buildroot}%{_datadir}/appdata/ascii-design.appdata.xml \
+	%{buildroot}%{_datadir}/%{name}/appdata/ascii-design.appdata.xml
+
 
 %files
 %doc COPYING.TXT INSTALL.TXT
 %{_bindir}/ascii-design
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/ascii-design.png
-%{_datadir}/
+%{_datadir}/appdata/
 
