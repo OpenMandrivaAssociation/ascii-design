@@ -34,7 +34,6 @@ cd src
 find . -name "*.cpp" -o -name "*.h" -o -name "*.cpp" |xargs chmod 0644
 cd -
 
-perl -pi -e "s|/share/appdata/|/share/ascii-design/appdata/|"  CMakeLists.txt
 
 %build
 %cmake_kde4 -DCMAKE_INSTALL_PREFIX=$RPM_BUILD_ROOT%{_prefix} 
@@ -65,5 +64,5 @@ desktop-file-validate $RPM_BUILD_ROOT%{_datadir}/applications/%{name}.desktop
 %{_bindir}/ascii-design
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/ascii-design.png
-%{_datadir}/%{name}/appdata/
+%{_datadir}/appdata/ascii-design.appdata.xml
 
