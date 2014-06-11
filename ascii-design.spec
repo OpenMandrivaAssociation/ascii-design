@@ -1,20 +1,20 @@
+%define oname Ascii-Design
+
 Name:       ascii-design
-Version:    1.0.2
+Version:    1.0.3
 Release:    1
 License:    GPLv2
 Summary:    Create awesome ascii art text
 Url:        http://ascii-design.sourceforge.net/
 Group:      Office
-Source0:    http://surfnet.dl.sourceforge.net/project/ascii-design/ascii-design/Ascii-Design%201.0.1/%{name}-%{version}.tar.bz2
-# aplied upstream
-# Patch0:     ascii-design-fsf-adress.patch
+Source0:    https://github.com/Faster3ck/Ascii-Design/archive/v%{version}.tar.gz
 
 BuildRequires:  gcc-c++ 
 BuildRequires:  cmake  
 BuildRequires:  make 
 BuildRequires:  kdelibs4-devel
 BuildRequires:  desktop-file-utils
-BuildRequires:  jpeg6-devel
+BuildRequires:  jpeg-devel
 
 Requires:	figlet
 Requires:	figlet-more-fonts
@@ -28,12 +28,12 @@ Ascii Design is able to use dozens of special fonts
 to create various styles of ascii arts.
 
 %prep
-%setup -q 
+%setup -qn %{oname}-%{version}
 sed -i 's/\r//' {COPYING,INSTALL}.TXT
 cd src
 find . -name "*.cpp" -o -name "*.h" -o -name "*.cpp" |xargs chmod 0644
 cd -
-#patch0 -p0
+
 
 %build
 %cmake_kde4 -DCMAKE_INSTALL_PREFIX=$RPM_BUILD_ROOT%{_prefix} 
@@ -58,10 +58,11 @@ EOF
 
 desktop-file-validate $RPM_BUILD_ROOT%{_datadir}/applications/%{name}.desktop
 
+
 %files
 %doc COPYING.TXT INSTALL.TXT
 %{_bindir}/ascii-design
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/ascii-design.png
-
+%{_datadir}/appdata/ascii-design.appdata.xml
 
