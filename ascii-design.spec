@@ -1,7 +1,7 @@
 %define oname Ascii-Design
 
 Name:       ascii-design
-Version:    1.0.3
+Version:    1.1.0
 Release:    1
 License:    GPLv2
 Summary:    Create awesome ascii art text
@@ -15,6 +15,9 @@ BuildRequires:  make
 BuildRequires:  kdelibs4-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  jpeg-devel
+BuildRequires:  qt5-devel
+BuildRequires:  qmake5
+BuildRequires:  pkgconfig(Qt5Widgets)
 
 Requires:	figlet
 Requires:	figlet-more-fonts
