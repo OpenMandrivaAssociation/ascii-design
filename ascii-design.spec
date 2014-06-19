@@ -1,5 +1,6 @@
 %define oname Ascii-Design
 
+
 Name:       ascii-design
 Version:    1.1.0
 Release:    1
