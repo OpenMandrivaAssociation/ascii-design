@@ -2,7 +2,7 @@
 
 Name:       ascii-design
 Version:    1.1.1
-Release:    1
+Release:    2
 License:    GPLv2
 Summary:    Create awesome ascii art text
 Url:        http://ascii-design.sourceforge.net/
