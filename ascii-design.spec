@@ -5,7 +5,7 @@ Version:    1.1.1
 Release:    2
 License:    GPLv2
 Summary:    Create awesome ascii art text
-Url:        http://ascii-design.sourceforge.net/
+Url:        https://ascii-design.sourceforge.net/
 Group:      Office
 Source0:    https://github.com/Faster3ck/Ascii-Design/archive/v%{version}.tar.gz
 
